@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Victor Chen — Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body { margin: 2rem; }
+    header.site { margin-bottom: 1.5rem; }
+    nav a { margin-right: .75rem; text-decoration: none; }
+    .contact a { text-decoration: none; }
+    h1 { margin: .25rem 0; }
+    h2 { margin-top: 1.5rem; }
+    article { margin: .75rem 0 1rem; }
+    .meta { font-size: .95em; opacity: .85; }
+    ul { margin: .5rem 0 0 1.25rem; }
+  </style>
+</head>
+<body>
+  <header class="site" role="banner">
+    <nav aria-label="Main">
+      <a href="../">Home</a>
+      <a href="../projects/">Projects</a>
+      <a href="../contact/">Contact</a>
+      <a href="../resume/">Resume</a>
+    </nav>
+  </header>
+
+  <main id="content">
+    <header>
+      <h1>Victor Chen</h1>
+      <p class="contact">
+        <a href="mailto:vic006@ucsd.edu">vic006@ucsd.edu</a> ·
+        <a href="tel:+14158028728">(415) 802-8728</a> ·
+        San Francisco, CA 94134 ·
+        <a href="https://github.com/vichen1" target="_blank" rel="noopener">github.com/vichen1</a>
+      </p>
+    </header>
+
+    <section aria-labelledby="education">
+      <h2 id="education">Education</h2>
+      <article>
+        <header>
+          <h3>University of California, San Diego (UCSD) — B.S. Data Science</h3>
+          <p class="meta">Expected <time datetime="2027-06">June 2027</time></p>
+        </header>
+        <p><strong>Relevant Coursework:</strong> Data Structures &amp; Algorithms, Machine Learning Fundamentals, Data Cleaning, Data Visualization, Linear Algebra, Multivariable Calculus, Database Management, Object-Oriented Programming</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="skills">
+      <h2 id="skills">Technical Skills</h2>
+
+      <article>
+        <header><h3>Languages</h3></header>
+        <p>Python, SQL, Java, MATLAB, HTML</p>
+      </article>
+
+      <article>
+        <header><h3>Libraries</h3></header>
+        <p>Pandas, NumPy, scikit-learn, Matplotlib, Plotly, Beautiful Soup</p>
+      </article>
+
+      <article>
+        <header><h3>Databases &amp; Tools</h3></header>
+        <p>PostgreSQL, Git/GitHub, Jupyter Notebooks, VS Code, IntelliJ, JUnit Testing</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="projects">
+      <h2 id="projects">Projects</h2>
+
+      <article>
+        <header>
+          <h3>Analyzing Healthiness Between Recipes</h3>
+          <p class="meta">
+            <time datetime="2025-03">March 2025</time> ·
+            Python, Pandas, NumPy, Jupyter Notebooks, Plotly, scikit-learn, GitHub ·
+            <a href="https://vichen1.github.io/RecipesProject/" target="_blank" rel="noopener">Project Link</a>
+          </p>
+        </header>
+        <ul>
+          <li>Collected and pre-processed 200K+ Food.com recipes; cleaned nutritional datasets for feature engineering and prediction.</li>
+          <li>Built and optimized Decision Tree and Random Forest models; improved accuracy from 75% → 99% with GridSearchCV hyperparameter tuning.</li>
+          <li>Produced interactive visualizations with Plotly to communicate insights across nutrition, cuisine, and user ratings.</li>
+          <li>Deployed as a web app, demonstrating end-to-end data pipeline design, visualization, and documentation.</li>
+        </ul>
+      </article>
+
+      <article>
+        <header>
+          <h3>Custom RGB Image Processing Utility</h3>
+          <p class="meta"><time datetime="2024-03">March 2024</time> · Python, NumPy, OOP, PIL</p>
+        </header>
+        <ul>
+          <li>Developed an object-oriented image processing framework with a custom <code>RGBImage</code> class for pixel-level manipulation.</li>
+          <li>Implemented reading/saving, brightness/contrast adjustment, and filtering using efficient NumPy operations.</li>
+          <li>Designed robust input validation pipelines to prevent errors from malformed or out-of-range pixel values.</li>
+          <li>Collaborated in a two-person team to define requirements and optimize runtime efficiency for large images.</li>
+        </ul>
+      </article>
+
+      <article>
+        <header>
+          <h3>Integrated Data and Image Processing Framework</h3>
+          <p class="meta"><time datetime="2024-05">May 2024</time> · Java, Data Structures, OOP</p>
+        </header>
+        <ul>
+          <li>Built a priority-based data handling system with a dynamic heap structure, enabling O(log n) scheduling of large-scale tasks.</li>
+          <li>Applied priority queues to optimize computation and resource allocation for high-resolution image datasets.</li>
+          <li>Demonstrated scalable task scheduling by applying heap-based structures to large data and image processing workloads.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

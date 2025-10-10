@@ -38,3 +38,26 @@ nav a.current {
   font-weight: bold;
   color: purple;
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border-bottom: 1px solid oklch(80% 3% 200);
+  margin-bottom: 2rem;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;  
+  color: inherit;         
+  padding: 0.5em;        
+}
+
+nav a.current {
+  font-weight: bold;  
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: calc(0.5em - 0.4em); 
+}

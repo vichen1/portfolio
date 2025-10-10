@@ -7,3 +7,34 @@ body {
     margin-inline: auto;      
     padding: 2rem; 
   }
+
+  nav ul,
+nav li {
+  display: contents;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-block: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: purple;
+}
+
+nav a.current {
+  font-weight: bold;
+  color: purple;
+}

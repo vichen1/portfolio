@@ -5,13 +5,12 @@ function $$(selector, context = document) {
 }
 
 let pages = [
-  { url: "", title: "Home" },
-  { url: "projects/", title: "Projects" },
-  { url: "resume/", title: "CV" },
-  { url: "contact/", title: "Contact" },
-  { url: "https://github.com/vichen1", title: "GitHub" }
-];
-
+    { url: "/portfolio/", title: "Home" },
+    { url: "/portfolio/projects/", title: "Projects" },
+    { url: "/portfolio/resume/", title: "CV" },
+    { url: "/portfolio/contact/", title: "Contact" },
+    { url: "https://github.com/vichen1", title: "GitHub" }
+  ];
 const BASE_PATH =
   location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "/"

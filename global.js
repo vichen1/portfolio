@@ -53,3 +53,14 @@ nav.insertAdjacentHTML(
   document.querySelector("#theme").addEventListener("change", (e) => {
     document.documentElement.style.colorScheme = e.target.value;
   });
+
+const select = document.querySelector("#theme");
+
+select.addEventListener("input", (event) => {
+  console.log("Color scheme changed to", event.target.value);
+
+  document.documentElement.style.setProperty(
+    "color-scheme",
+    event.target.value
+  );
+});

@@ -4,28 +4,26 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-let pages = [
-    { url: "/portfolio/", title: "Home" },
-    { url: "/portfolio/projects/", title: "Projects" },
-    { url: "/portfolio/resume/", title: "CV" },
-    { url: "/portfolio/contact/", title: "Contact" },
-    { url: "https://github.com/vichen1", title: "GitHub" }
-  ];
 const BASE_PATH =
   location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "/"
-    : "/your-repo-name/";
+    : "/portfolio/";
+
+let pages = [
+  { url: BASE_PATH, title: "Home" },
+  { url: BASE_PATH + "projects/", title: "Projects" },
+  { url: BASE_PATH + "resume/", title: "CV" },
+  { url: BASE_PATH + "contact/", title: "Contact" },
+  { url: "https://github.com/vichen1", title: "GitHub" }
+];
 
 let nav = document.createElement("nav");
 document.body.prepend(nav);
 
 for (let p of pages) {
-  let url = p.url.startsWith("http") ? p.url : BASE_PATH + p.url;
-  let title = p.title;
-
   let a = document.createElement("a");
-  a.href = url;
-  a.textContent = title;
+  a.href = p.url;
+  a.textContent = p.title;
 
   a.classList.toggle(
     "current",

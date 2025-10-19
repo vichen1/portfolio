@@ -1,4 +1,9 @@
 html {
+  color-scheme: light dark;
+  background-color: canvas;
+  color: canvastext;
+}
+html {
   --color-accent: oklch(65% 50% 0);
   color: oklch(20% 0% 0);
   accent-color: var(--color-accent);
@@ -131,4 +136,62 @@ h1 {
 h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  --border-color: oklch(50% 10% 200 / 40%);
+}
+
+nav a {
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 0.2rem solid transparent;
+  color: inherit;
+}
+
+nav a.current {
+  border-bottom-color: var(--border-color);
+  font-weight: bold;
+}
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
+  <label class="color-scheme">
+    Theme:
+    <select id="theme">
+      <option value="light dark">Automatic</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+  `
+);
+
+// Update the color-scheme when the dropdown changes
+document.querySelector("#theme").addEventListener("change", (e) => {
+  document.documentElement.style.colorScheme = e.target.value;
+});
+
+nav a:hover {
+  background-color: color-mix(in oklch, var(--color-accent, oklch(60% 0.2 340)), canvas 85%);
+}
+.color-scheme {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 0.9rem;
+  color: inherit;
+}
+
+.color-scheme select {
+  margin-left: 0.25rem;
+  background: canvas;
+  color: canvastext;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
 }

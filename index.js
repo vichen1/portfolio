@@ -1,11 +1,11 @@
-import { fetchJSON, renderProjects, fetchGithubData } from './global.js';
+import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 
 const projects = await fetchJSON('./lib/projects.json');
 const latestProjects = projects.slice(0, 3);
 const projectsContainer = document.querySelector('.projects');
 renderProjects(latestProjects, projectsContainer, 'h3');
 
-const githubData = await fetchGithubData('vichen1');
+const githubData = await fetchGitHubData('vichen1');
 if (githubData) {
   document.querySelector('#github-followers').textContent =
     `Followers: ${githubData.followers}`;

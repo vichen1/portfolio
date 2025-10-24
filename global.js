@@ -70,11 +70,15 @@ select.addEventListener("input", (event) => {
   setColorScheme(event.target.value);
 });
 
+// ---------------------
+// Helper Functions
+// ---------------------
+
 export async function fetchJSON(url) {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
     const data = await response.json();
     return data;
@@ -82,34 +86,27 @@ export async function fetchJSON(url) {
     console.error('Error fetching or parsing JSON data:', error);
   }
 }
+
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
-  if (!containerElement) return
-  containerElement.innerHTML = ''
+  if (!containerElement) return;
+  containerElement.innerHTML = '';
   if (!Array.isArray(projects) || projects.length === 0) {
-    containerElement.innerHTML = '<p>No projects available.</p>'
-    return
+    containerElement.innerHTML = '<p>No projects available.</p>';
+    return;
   }
-  if (!/^h[1-6]$/.test(headingLevel)) headingLevel = 'h2'
+  if (!/^h[1-6]$/.test(headingLevel)) headingLevel = 'h2';
 
   projects.forEach(project => {
-    const article = document.createElement('article')
+    const article = document.createElement('article');
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
       <img src="${project.image}" alt="${project.title}">
       <p>${project.description}</p>
-    `
-    containerElement.appendChild(article)
-  })
+    `;
+    containerElement.appendChild(article);
+  });
 }
 
-export async function fetchGithubData(username) {
-  const url = `https://api.github.com/users/${username}`;
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`GitHub request failed: ${response.statusText}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching GitHub data:', error);
-  }
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${username}`);
 }

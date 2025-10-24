@@ -138,3 +138,23 @@ h2, h3, h4, h5, h6 {
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
 }
+.projects article {
+  background-color: oklch(98% 2% 200);
+  color: canvastext;
+  border: 1px solid oklch(90% 3% 200);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .projects article {
+    background-color: oklch(25% 5% 200);
+    color: canvastext;
+    border: 1px solid oklch(40% 5% 200);
+  }
+
+  .projects h2,
+  .projects p {
+    color: canvastext;
+  }
+}

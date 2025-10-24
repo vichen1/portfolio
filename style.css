@@ -1,6 +1,7 @@
 html {
-  background-color: white;
-  color: black;
+  color-scheme: light dark;
+  background-color: canvas;
+  color: canvastext;
   --color-accent: oklch(65% 50% 0);
   accent-color: var(--color-accent);
 }
@@ -10,8 +11,8 @@ body {
   max-width: 100ch;
   margin-inline: auto;
   padding: 2rem;
-  background-color: white;
-  color: black;
+  background-color: canvas;
+  color: canvastext;
 }
 
 nav {
@@ -19,7 +20,8 @@ nav {
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
-  border-bottom: 1px solid oklch(85% 3% 200);
+  border-bottom: 1px solid var(--border-color);
+  --border-color: oklch(50% 10% 200 / 40%);
 }
 
 nav a {
@@ -31,12 +33,12 @@ nav a {
 }
 
 nav a.current {
-  border-bottom-color: oklch(50% 10% 200 / 40%);
+  border-bottom-color: var(--border-color);
   font-weight: bold;
 }
 
 nav a:hover {
-  background-color: color-mix(in oklch, var(--color-accent), white 85%);
+  background-color: color-mix(in oklch, var(--color-accent, oklch(60% 0.2 340)), canvas 85%);
 }
 
 form {
@@ -99,6 +101,35 @@ button:hover {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: oklch(20% 3% 250);
+    color: oklch(95% 1% 250);
+  }
+
+  body {
+    background-color: oklch(20% 3% 250);
+    color: oklch(95% 1% 250);
+  }
+
+  .projects article {
+    background-color: oklch(25% 4% 250);
+    color: oklch(95% 1% 250);
+    border: 1px solid oklch(40% 5% 250);
+  }
+
+  .projects h2,
+  .projects p {
+    color: oklch(95% 1% 250);
+  }
+
+  .color-scheme select {
+    background: oklch(25% 4% 250);
+    color: oklch(95% 1% 250);
+    border: 1px solid oklch(40% 5% 250);
+  }
+}
+
 .projects img {
   width: 100%;
   height: auto;
@@ -129,7 +160,7 @@ h2, h3, h4, h5, h6 {
   margin-left: 0.25rem;
   background: white;
   color: black;
-  border: 1px solid oklch(85% 3% 200);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
 }

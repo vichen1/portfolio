@@ -98,6 +98,18 @@ button:hover {
   margin-block: 0.5em 1em;
 }
 
+@media (prefers-color-scheme: dark) {
+  .projects article {
+    background-color: oklch(25% 5% 200); 
+    border-color: oklch(40% 5% 200);
+  }
+
+  .projects h2,
+  .projects p {
+    color: canvastext; 
+  }
+}
+
 h1 {
   margin-block: 1.5em 1em;
   font-size: 400%;

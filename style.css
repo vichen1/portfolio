@@ -154,3 +154,36 @@ h2, h3, h4, h5, h6 {
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
 }
+.github {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.github h2 {
+  margin-bottom: 1em;
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+.github-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.github-stats dt {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: oklch(50% 0.05 250);
+  text-transform: uppercase;
+  grid-row: 1;
+}
+
+.github-stats dd {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0;
+  grid-row: 2;
+}

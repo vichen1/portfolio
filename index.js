@@ -13,8 +13,10 @@ try {
   console.error("Error loading projects:", error);
 }
 
+let githubData = null; 
+
 try {
-  const githubData = await fetchGitHubData('vichen1');
+  githubData = await fetchGitHubData('vichen1');
   if (githubData) {
     const followersElement = document.querySelector('#github-followers');
     const reposElement = document.querySelector('#github-repos');
@@ -31,6 +33,7 @@ try {
 } catch (error) {
   console.error("Error fetching GitHub data:", error);
 }
+
 const profileStats = document.querySelector('#profile-stats');
 
 if (githubData && profileStats) {

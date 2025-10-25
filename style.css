@@ -12,6 +12,7 @@ body {
   max-width: 100ch;
   margin-inline: auto;
   padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav {
@@ -100,30 +101,27 @@ button:hover {
   margin-block: 0.5em 1em;
 }
 
-/* ---- DARK MODE ---- */
-@media (prefers-color-scheme: dark) {
-  html {
-    --border-color: oklch(35% 5% 250);
-    background-color: oklch(20% 3% 250);
-    color: oklch(95% 1% 250);
-  }
+html[data-theme="dark"] {
+  --border-color: oklch(35% 5% 250);
+  background-color: oklch(20% 3% 250);
+  color: oklch(95% 1% 250);
+}
 
-  .projects article {
-    background-color: oklch(25% 5% 250);
-    border-color: oklch(35% 5% 250);
-    color: oklch(95% 1% 250);
-  }
+html[data-theme="dark"] .projects article {
+  background-color: oklch(25% 5% 250);
+  border-color: oklch(35% 5% 250);
+  color: oklch(95% 1% 250);
+}
 
-  .projects h2,
-  .projects p {
-    color: oklch(95% 1% 250);
-  }
+html[data-theme="dark"] .projects h2,
+html[data-theme="dark"] .projects p {
+  color: oklch(95% 1% 250);
+}
 
-  .color-scheme select {
-    background: oklch(25% 5% 250);
-    color: oklch(95% 1% 250);
-    border: 1px solid oklch(40% 5% 250);
-  }
+html[data-theme="dark"] .color-scheme select {
+  background: oklch(25% 5% 250);
+  color: oklch(95% 1% 250);
+  border: 1px solid oklch(40% 5% 250);
 }
 
 h1 {
@@ -154,6 +152,7 @@ h2, h3, h4, h5, h6 {
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
 }
+
 .github {
   margin-top: 2em;
   text-align: center;

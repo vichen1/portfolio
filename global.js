@@ -55,6 +55,7 @@ const select = document.querySelector("#theme");
 
 function setColorScheme(value) {
   document.documentElement.style.setProperty("color-scheme", value);
+  document.documentElement.setAttribute("data-theme", value);
   select.value = value;
   localStorage.colorScheme = value;
 }
@@ -69,6 +70,10 @@ select.addEventListener("input", (event) => {
   console.log("Color scheme changed to:", event.target.value);
   setColorScheme(event.target.value);
 });
+
+// ---------------------
+// Helper Functions
+// ---------------------
 
 export async function fetchJSON(url) {
   try {

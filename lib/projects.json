@@ -1,9 +1,10 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam atque ex iste at, libero velit mollitia temporibus eius. Atque eius quidem vitae? Inventore error voluptatibus explicabo a eum accusamus qui."
-    },
+        "title": "DSC 106 Portfolio Site",
+        "year": "2025",
+        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+        "description": "A personal website showcasing my projects and GitHub stats using JavaScript modules and JSON data."
+      },
     {
         "title": "Deleniti corrupti magnam labore.",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",

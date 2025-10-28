@@ -7,8 +7,8 @@
       },
     {
         "title": "Analyzing Healthiness Between Recipes",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Natus fugit temporibus pariatur veritatis similique est obcaecati explicabo. Ipsam, soluta odit animi vel omnis autem cum voluptatem. Recusandae nesciunt voluptatibus unde, repellendus modi dicta atque quam doloremque blanditiis odit!"
+        "image": "../images/food_project.png",
+        "description": "Analyzed 200K+ Food.com recipes using Python and scikit-learn to predict recipe healthiness with 99% accuracy, featuring interactive Plotly visualizations and a deployed web app."
     },
     {
         "title": "Recusandae sapiente qui sint.",

@@ -8,7 +8,8 @@
     {
         "title": "Analyzing Healthiness Between Recipes",
         "image": "/portfolio/images/food_project.png",
-        "description": "Analyzed 200K+ Food.com recipes using Python and scikit-learn to predict recipe healthiness with 99% accuracy, featuring interactive Plotly visualizations and a deployed web app."
+        "description": "Analyzed 200K+ Food.com recipes using Python and scikit-learn to predict recipe healthiness with 99% accuracy, featuring interactive Plotly visualizations and a deployed web app.",
+        "link": "https://vichen1.github.io/RecipesProject/"
     },
     {
         "title": "Recusandae sapiente qui sint.",

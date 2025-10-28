@@ -71,9 +71,6 @@ select.addEventListener("input", (event) => {
   setColorScheme(event.target.value);
 });
 
-// ---------------------
-// Helper Functions
-// ---------------------
 
 export async function fetchJSON(url) {
   try {
@@ -99,14 +96,26 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
   projects.forEach(project => {
     const article = document.createElement('article');
-    article.innerHTML = `
-      <${headingLevel}>${project.title}</${headingLevel}>
-      <img src="${project.image}" alt="${project.title}">
-      <p>${project.description}</p>
-    `;
+        const title = document.createElement(headingLevel);
+    if (project.link) {
+      const link = document.createElement('a');
+      link.href = project.link;
+      link.target = '_blank';
+      link.textContent = project.title;
+      title.appendChild(link);
+    } else {
+      title.textContent = project.title;
+    }
+    const img = document.createElement('img');
+    img.src = project.image;
+    img.alt = project.title;
+    const desc = document.createElement('p');
+    desc.textContent = project.description;
+    article.append(title, img, desc);
     containerElement.appendChild(article);
   });
 }
+
 
 export async function fetchGitHubData(username) {
   return fetchJSON(`https://api.github.com/users/${username}`);

@@ -7,7 +7,7 @@
       },
     {
         "title": "Analyzing Healthiness Between Recipes",
-        "image": "../images/food_project.png",
+        "image": "images/food_project.png",
         "description": "Analyzed 200K+ Food.com recipes using Python and scikit-learn to predict recipe healthiness with 99% accuracy, featuring interactive Plotly visualizations and a deployed web app."
     },
     {

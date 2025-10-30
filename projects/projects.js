@@ -10,33 +10,51 @@ if (titleElement && Array.isArray(projects)) {
   titleElement.textContent = `${projects.length} Projects`;
 }
 
-const rolledData = d3.rollups(
-  projects,
-  v => v.length,
-  d => d.year
-);
+const searchInput = document.querySelector('.searchBar');
+let query = '';
 
-const data = rolledData.map(([year, count]) => ({
-  value: count,
-  label: year
-}));
+searchInput.addEventListener('input', event => {
+  query = event.target.value.toLowerCase();
 
-const svg = d3.select('#projects-plot');
-const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-const sliceGenerator = d3.pie().value(d => d.value);
-const arcData = sliceGenerator(data);
-const colors = d3.scaleOrdinal(d3.schemeTableau10);
+  const filteredProjects = projects.filter(project =>
+    project.title.toLowerCase().includes(query)
+  );
 
-arcData.forEach((d, i) => {
-  svg.append('path')
-    .attr('d', arcGenerator(d))
-    .attr('fill', colors(i));
-});
+  projectsContainer.innerHTML = '';
+  d3.select('#projects-plot').selectAll('*').remove();
+  d3.select('.legend').selectAll('*').remove();
 
-const legend = d3.select('.legend');
-data.forEach((d, idx) => {
-  legend.append('li')
-    .attr('style', `--color:${colors(idx)}`)
-    .attr('class', 'legend-item')
-    .html(`<span class="swatch"></span>${d.label} <em>(${d.value})</em>`);
+  renderProjects(filteredProjects, projectsContainer, 'h2');
+  titleElement.textContent = `${filteredProjects.length} Projects`;
+
+  const rolledData = d3.rollups(
+    filteredProjects,
+    v => v.length,
+    d => d.year
+  );
+
+  const data = rolledData.map(([year, count]) => ({
+    value: count,
+    label: year
+  }));
+
+  const svg = d3.select('#projects-plot');
+  const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+  const sliceGenerator = d3.pie().value(d => d.value);
+  const arcData = sliceGenerator(data);
+  const colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+  arcData.forEach((d, i) => {
+    svg.append('path')
+      .attr('d', arcGenerator(d))
+      .attr('fill', colors(i));
+  });
+
+  const legend = d3.select('.legend');
+  data.forEach((d, idx) => {
+    legend.append('li')
+      .attr('style', `--color:${colors(idx)}`)
+      .attr('class', 'legend-item')
+      .html(`<span class="swatch"></span>${d.label} <em>(${d.value})</em>`);
+  });
 });

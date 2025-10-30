@@ -10,15 +10,22 @@ if (titleElement && Array.isArray(projects)) {
   titleElement.textContent = `${projects.length} Projects`;
 }
 
+const data = [1, 2];
+
 const svg = d3.select('#projects-plot');
-
-const arc = d3.arc()
+const arcGenerator = d3.arc()
   .innerRadius(0)
-  .outerRadius(50)({
-    startAngle: 0,
-    endAngle: 2 * Math.PI,
-  });
+  .outerRadius(50);
 
-svg.append('path')
-  .attr('d', arc)
-  .attr('fill', 'red');
+const sliceGenerator = d3.pie();
+const arcData = sliceGenerator(data);
+
+const arcs = arcData.map(d => arcGenerator(d));
+
+const colors = ['gold', 'purple'];
+
+arcs.forEach((arc, i) => {
+  svg.append('path')
+    .attr('d', arc)
+    .attr('fill', colors[i]);
+});

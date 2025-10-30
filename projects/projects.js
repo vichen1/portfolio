@@ -10,14 +10,16 @@ if (titleElement && Array.isArray(projects)) {
   titleElement.textContent = `${projects.length} Projects`;
 }
 
-const data = [
-  { value: 1, label: 'apples' },
-  { value: 2, label: 'oranges' },
-  { value: 3, label: 'mangos' },
-  { value: 4, label: 'pears' },
-  { value: 5, label: 'limes' },
-  { value: 5, label: 'cherries' },
-];
+const rolledData = d3.rollups(
+  projects,
+  v => v.length,
+  d => d.year
+);
+
+const data = rolledData.map(([year, count]) => ({
+  value: count,
+  label: year
+}));
 
 const svg = d3.select('#projects-plot');
 const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);

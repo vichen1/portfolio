@@ -7,58 +7,69 @@
       },
     {
         "title": "Analyzing Healthiness Between Recipes",
+        "year": "2025",
         "image": "/portfolio/images/food_project.png",
         "description": "Analyzed 200K+ Food.com recipes using Python and scikit-learn to predict recipe healthiness with 99% accuracy, featuring interactive Plotly visualizations and a deployed web app.",
         "link": "https://vichen1.github.io/RecipesProject/"
     },
     {
         "title": "Ethical Data Visualization: Race and Police Misconduct in NYC",
+        "year": "2025",
         "image": "/portfolio/images/nyc_police.jpeg",
         "description": "A data visualization project analyzing racial disparities in police misconduct allegations using NYC data. It compares population and complaint proportions to highlight overrepresentation and examines sustained rates to discuss how design choices affect ethical storytelling in data visualization.",
         "link": "https://andykkimm.github.io/dsc106_project2/"
     },
     {
         "title": "Aspernatur esse omnis illo.",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Aspernatur praesentium delectus repudiandae repellat ipsum provident facere veniam maiores illum quae, assumenda deleniti, cum tempore possimus rem consequuntur accusantium quia asperiores voluptas consequatur debitis, dolorem tempora cumque doloribus. Nostrum!"
     },
     {
         "title": "Perferendis aut quis dolor.",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Error sint at deserunt, corrupti assumenda quos. Tempora qui, laboriosam nostrum deleniti error quasi itaque illum similique asperiores ipsam aut vitae nihil nisi minima eveniet corporis nam, iste dolor quo!"
     },
     {
         "title": "Illum nobis odio magni.",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Accusantium natus quidem voluptate distinctio, quaerat assumenda iusto corporis minima est culpa odit, eveniet illo fugit? Rem obcaecati, velit, nisi deserunt asperiores est veniam ut non optio molestias ex pariatur?"
     },
     {
         "title": "Reiciendis aliquid cum obcaecati.",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Aliquam reiciendis quaerat illum consequatur vitae voluptatem exercitationem necessitatibus! Ullam, adipisci facilis. Dolores, ducimus odio vitae provident, aliquam porro minima ratione at, eaque sapiente nobis non vero rerum optio nesciunt."
     },
     {
         "title": "Doloremque sit consequatur maxime!",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Repudiandae vitae officia voluptas, quos placeat necessitatibus explicabo tempora. Aperiam rerum voluptas tempora voluptates ab aspernatur veniam saepe. Porro quibusdam quas maiores incidunt temporibus magnam dolores ipsa ea velit quasi!"
     },
     {
         "title": "Iusto neque aliquam eum?",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Laborum molestias eius quisquam commodi, similique necessitatibus odio magni a non sint, doloribus natus, voluptates qui expedita recusandae itaque repellat quod quos cum. Quis adipisci voluptate aliquam, deleniti inventore maiores!"
     },
     {
         "title": "Eaque culpa dolores voluptas?",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Voluptatem cumque porro ea, consequuntur laborum neque, dolor perferendis ipsam sapiente, deserunt quibusdam sequi voluptas quis illo explicabo vitae eveniet alias adipisci? Ex eius fuga, ratione nesciunt voluptatibus rerum alias?"
     },
     {
         "title": "Placeat nostrum aperiam doloremque.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Dolor dolorem nesciunt quae iusto sapiente! Voluptas, veniam. Molestias reiciendis vitae eius ab assumenda vero. Minima quo vitae minus, inventore eaque, blanditiis non similique itaque pariatur provident, nostrum quam rerum!"
     },
     {
         "title": "Blanditiis, aliquam. Quam, ipsam.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Tempore exercitationem fuga quaerat tempora voluptas ratione quia, commodi, totam consequuntur quis qui architecto doloremque adipisci excepturi iure laudantium facere delectus esse quo non temporibus. In possimus nostrum vitae autem."
     }

@@ -261,3 +261,11 @@ html[data-theme="dark"] .searchBar {
 html[data-theme="dark"] .searchBar::placeholder {
   color: oklch(80% 0.05 250);
 }
+#projects-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+#projects-plot path {
+  transition: opacity 300ms ease;
+  cursor: pointer;
+}

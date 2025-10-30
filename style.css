@@ -218,3 +218,19 @@ h2, h3, h4, h5, h6 {
   aspect-ratio: 1 / 1;
   display: inline-block;
 }
+
+.chart-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.chart-container svg {
+  flex: 0 0 auto;
+}
+
+.chart-container .legend {
+  flex: 1;
+}

@@ -269,3 +269,12 @@ html[data-theme="dark"] .searchBar::placeholder {
   transition: opacity 300ms ease;
   cursor: pointer;
 }
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
+

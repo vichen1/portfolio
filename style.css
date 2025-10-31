@@ -270,19 +270,19 @@ html[data-theme="dark"] .searchBar::placeholder {
   cursor: pointer;
 }
 
-path.wedge {
+svg path.wedge {
   cursor: pointer;
   transition: fill 0.3s ease, opacity 0.3s ease;
 }
 
-path.wedge.selected {
+svg path.wedge.selected {
   fill: oklch(60% 45% 0) !important; 
-  stroke: white;
+  stroke: white !important;
   stroke-width: 2px;
-  opacity: 1;
+  opacity: 1 !important;
 }
 
-svg:has(path:hover) path:not(:hover) {
+#projects-plot:has(path:hover) path:not(:hover) {
   opacity: 0.5;
 }
 

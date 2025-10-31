@@ -270,20 +270,25 @@ html[data-theme="dark"] .searchBar::placeholder {
   cursor: pointer;
 }
 
-.selected {
-  --color: oklch(60% 45% 0) !important;
+path.wedge {
+  cursor: pointer;
+  transition: fill 0.3s ease, opacity 0.3s ease;
 }
 
-path.selected {
-  fill: var(--color) !important;
+path.wedge.selected {
+  fill: oklch(60% 45% 0) !important; 
   stroke: white;
   stroke-width: 2px;
-  transition: fill 0.3s ease;
+  opacity: 1;
+}
+
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
 }
 
 .legend-item.selected {
-  background-color: oklch(60% 45% 0 / 0.2);
+  background-color: oklch(60% 45% 0 / 0.25);
   border-radius: 6px;
   font-weight: 600;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }

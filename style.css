@@ -270,11 +270,16 @@ html[data-theme="dark"] .searchBar::placeholder {
   cursor: pointer;
 }
 
-.selected {
-  --color: oklch(60% 45% 0) !important;
+path.selected {
+  stroke: white;
+  stroke-width: 2px;
+  fill: oklch(60% 45% 0) !important; 
+  transition: 200ms ease;
 }
 
-.selected:is(path) {
-  fill: var(--color);
+.legend-item.selected {
+  background-color: oklch(60% 45% 0 / 0.2);
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 200ms ease;
 }
-

@@ -13,7 +13,6 @@ function renderPieChart(projectsGiven) {
   const legend = d3.select('.legend');
   svg.selectAll('*').remove();
   legend.selectAll('*').remove();
-
   const rolledData = d3.rollups(projectsGiven, v => v.length, d => d.year);
   const data = rolledData.map(([year, count]) => ({ value: count, label: year }));
 
@@ -23,18 +22,21 @@ function renderPieChart(projectsGiven) {
   const sliceGenerator = d3.pie().value(d => d.value);
   const arcData = sliceGenerator(data);
   const colors = d3.scaleOrdinal(d3.schemeTableau10);
-
   svg.selectAll('path')
     .data(arcData)
     .enter()
     .append('path')
     .attr('d', arcGenerator)
     .attr('fill', (_, i) => colors(i))
-    .on('click', (_, i) => {
+    .attr('class', 'wedge')
+    .on('click', function (_, i) {
       selectedIndex = selectedIndex === i ? -1 : i;
 
-      svg.selectAll('path').attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
-      legend.selectAll('li').attr('class', (_, idx) => idx === selectedIndex ? 'selected legend-item' : 'legend-item');
+      svg.selectAll('path')
+        .attr('class', (_, idx) => (idx === selectedIndex ? 'wedge selected' : 'wedge'));
+
+      legend.selectAll('li')
+        .attr('class', (_, idx) => (idx === selectedIndex ? 'legend-item selected' : 'legend-item'));
     });
 
   legend.selectAll('li')
@@ -44,11 +46,14 @@ function renderPieChart(projectsGiven) {
     .attr('style', (_, i) => `--color:${colors(i)}`)
     .attr('class', 'legend-item')
     .html(d => `<span class="swatch"></span>${d.label} <em>(${d.value})</em>`)
-    .on('click', (_, i) => {
+    .on('click', function (_, i) {
       selectedIndex = selectedIndex === i ? -1 : i;
 
-      svg.selectAll('path').attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
-      legend.selectAll('li').attr('class', (_, idx) => idx === selectedIndex ? 'selected legend-item' : 'legend-item');
+      svg.selectAll('path')
+        .attr('class', (_, idx) => (idx === selectedIndex ? 'wedge selected' : 'wedge'));
+
+      legend.selectAll('li')
+        .attr('class', (_, idx) => (idx === selectedIndex ? 'legend-item selected' : 'legend-item'));
     });
 }
 
@@ -63,7 +68,6 @@ updateVisuals(projects);
 
 searchInput.addEventListener('input', event => {
   const query = event.target.value.toLowerCase();
-
   const filteredProjects = projects.filter(project => {
     const values = Object.values(project).join('\n').toLowerCase();
     return values.includes(query);

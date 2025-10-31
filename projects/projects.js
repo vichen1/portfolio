@@ -10,14 +10,12 @@ let selectedIndex = -1;
 let query = '';           
 let chartData = [];       
 
-/* ---------- helper ---------- */
 function renderProjectsAndTitle(list, extra = '') {
   projectsContainer.innerHTML = '';
   renderProjects(list, projectsContainer, 'h2');
   titleElement.textContent = `${list.length} Projects${extra}`;
 }
 
-/* ---------- chart ---------- */
 function renderPieChart(projectsGiven) {
   const svg = d3.select('#projects-plot');
   const legend = d3.select('.legend');
@@ -62,19 +60,16 @@ function renderPieChart(projectsGiven) {
     });
 }
 
-/* ---------- filtering logic ---------- */
 function updateFilteredProjects(projectsGiven, colors) {
   const svg = d3.select('#projects-plot');
   const legend = d3.select('.legend');
 
-  // Update highlight classes
   svg.selectAll('path')
     .attr('class', (d, idx) => (idx === selectedIndex ? 'selected' : ''));
   legend.selectAll('li')
     .attr('class', (d, idx) => (idx === selectedIndex ? 'selected' : ''));
 
-  // Handle filtering logic
-  if (selectedIndex === -1) {
+    if (selectedIndex === -1) {
     renderProjectsAndTitle(projectsGiven);
   } else {
     const selectedYear = chartData[selectedIndex].label;
@@ -83,7 +78,6 @@ function updateFilteredProjects(projectsGiven, colors) {
   }
 }
 
-/* ---------- render ---------- */
 function updateVisuals(filteredProjects) {
   renderProjectsAndTitle(filteredProjects);
   renderPieChart(filteredProjects);
@@ -91,15 +85,17 @@ function updateVisuals(filteredProjects) {
 
 updateVisuals(projects);
 
-/* ---------- search ---------- */
 searchInput.addEventListener('input', event => {
   query = event.target.value.toLowerCase();
-  const filteredByQuery = projects.filter(project => {
+  let filteredProjects = projects.filter(project => {
     const values = Object.values(project).join('\n').toLowerCase();
     return values.includes(query);
   });
 
-  // reset selection when searching
-  selectedIndex = -1;
-  updateVisuals(filteredByQuery);
+  if (selectedIndex !== -1 && chartData[selectedIndex]) {
+    const selectedYear = chartData[selectedIndex].label;
+    filteredProjects = filteredProjects.filter(p => String(p.year) === selectedYear);
+  }
+
+  updateVisuals(filteredProjects);
 });

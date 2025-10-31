@@ -6,9 +6,9 @@ const projectsContainer = document.querySelector('.projects');
 const titleElement = document.querySelector('.projects-title');
 const searchInput = document.querySelector('.searchBar');
 
-let selectedIndex = -1;  // which wedge is selected (-1 = none)
-let query = '';           // search text
-let chartData = [];       // store current chart data globally for filtering
+let selectedIndex = -1;  
+let query = '';           
+let chartData = [];       
 
 /* ---------- helper ---------- */
 function renderProjectsAndTitle(list, extra = '') {
@@ -38,10 +38,12 @@ function renderPieChart(projectsGiven) {
     .enter()
     .append('path')
     .attr('d', arcGenerator)
-    .attr('fill', (_, i) => colors(i))
-    .attr('class', (_, i) => (i === selectedIndex ? 'wedge selected' : 'wedge'))
-    .on('click', function (_, i) {
-      selectedIndex = selectedIndex === i ? -1 : i;
+    .attr('fill', (d, i) => colors(i))
+    .attr('class', (d, i) => (i === selectedIndex ? 'selected' : ''))
+    .style('cursor', 'pointer')
+    .on('click', function (event, d) {
+      const clickedIndex = arcData.indexOf(d);
+      selectedIndex = selectedIndex === clickedIndex ? -1 : clickedIndex;
       updateFilteredProjects(projectsGiven, colors);
     });
 
@@ -49,11 +51,13 @@ function renderPieChart(projectsGiven) {
     .data(chartData)
     .enter()
     .append('li')
-    .attr('style', (_, i) => `--color:${colors(i)}`)
-    .attr('class', (_, i) => (i === selectedIndex ? 'legend-item selected' : 'legend-item'))
+    .attr('style', (d, i) => `--color:${colors(i)}`)
+    .attr('class', (d, i) => (i === selectedIndex ? 'selected' : ''))
     .html(d => `<span class="swatch"></span>${d.label} <em>(${d.value})</em>`)
-    .on('click', function (_, i) {
-      selectedIndex = selectedIndex === i ? -1 : i;
+    .style('cursor', 'pointer')
+    .on('click', function (event, d) {
+      const clickedIndex = chartData.indexOf(d);
+      selectedIndex = selectedIndex === clickedIndex ? -1 : clickedIndex;
       updateFilteredProjects(projectsGiven, colors);
     });
 }
@@ -65,21 +69,17 @@ function updateFilteredProjects(projectsGiven, colors) {
 
   // Update highlight classes
   svg.selectAll('path')
-    .attr('class', (_, idx) => (idx === selectedIndex ? 'wedge selected' : 'wedge'));
+    .attr('class', (d, idx) => (idx === selectedIndex ? 'selected' : ''));
   legend.selectAll('li')
-    .attr('class', (_, idx) => (idx === selectedIndex ? 'legend-item selected' : 'legend-item'));
+    .attr('class', (d, idx) => (idx === selectedIndex ? 'selected' : ''));
 
   // Handle filtering logic
   if (selectedIndex === -1) {
     renderProjectsAndTitle(projectsGiven);
-  } else if (chartData[selectedIndex]) {
-    const selectedYear = String(chartData[selectedIndex].label);
+  } else {
+    const selectedYear = chartData[selectedIndex].label;
     const filtered = projectsGiven.filter(p => String(p.year) === selectedYear);
     renderProjectsAndTitle(filtered, ` (${selectedYear})`);
-  } else {
-    console.warn("Selected index out of range — resetting.");
-    selectedIndex = -1;
-    renderProjectsAndTitle(projectsGiven);
   }
 }
 

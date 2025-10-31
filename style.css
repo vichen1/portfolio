@@ -101,6 +101,7 @@ button:hover {
   margin-block: 0.5em 1em;
 }
 
+/* Dark theme adjustments */
 html[data-theme="dark"] {
   --border-color: oklch(35% 5% 250);
   background-color: oklch(20% 3% 250);
@@ -136,6 +137,7 @@ h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+/* Theme selector */
 .color-scheme {
   position: absolute;
   top: 0.5rem;
@@ -153,6 +155,7 @@ h2, h3, h4, h5, h6 {
   padding: 0.2rem 0.4rem;
 }
 
+/* GitHub section */
 .github {
   margin-top: 2em;
   text-align: center;
@@ -186,6 +189,8 @@ h2, h3, h4, h5, h6 {
   margin: 0;
   grid-row: 2;
 }
+
+/* Chart and legend styling */
 #projects-plot {
   max-width: 20em;
   margin-block: 2em;
@@ -234,6 +239,8 @@ h2, h3, h4, h5, h6 {
 .chart-container .legend {
   flex: 1;
 }
+
+/* Search bar */
 .searchBar {
   display: block;
   width: 100%;
@@ -261,13 +268,9 @@ html[data-theme="dark"] .searchBar {
 html[data-theme="dark"] .searchBar::placeholder {
   color: oklch(80% 0.05 250);
 }
+
 #projects-plot:has(path:hover) path:not(:hover) {
   opacity: 0.5;
-}
-
-#projects-plot path {
-  transition: opacity 300ms ease;
-  cursor: pointer;
 }
 
 svg path.wedge {
@@ -276,14 +279,10 @@ svg path.wedge {
 }
 
 svg path.wedge.selected {
-  fill: oklch(60% 45% 0) !important; 
+  fill: oklch(60% 45% 0) !important;
   stroke: white !important;
   stroke-width: 2px;
   opacity: 1 !important;
-}
-
-#projects-plot:has(path:hover) path:not(:hover) {
-  opacity: 0.5;
 }
 
 .legend-item.selected {

@@ -120,10 +120,19 @@ function renderScatterPlot(data, commits) {
     .selectAll('circle')
     .data(commits)
     .join('circle')
-    .attr('cx', (d) => xScale(d.datetime))
-    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('cx', d => xScale(d.datetime))
+    .attr('cy', d => yScale(d.hourFrac))
     .attr('r', 5)
-    .attr('fill', 'steelblue');
+    .attr('fill', 'steelblue')
+    .on('mouseenter', (event, commit) => {
+      renderTooltipContent(commit);
+      updateTooltipVisibility(true);
+      updateTooltipPosition(event);
+    })
+    .on('mousemove', updateTooltipPosition)   
+    .on('mouseleave', () => updateTooltipVisibility(false));
+
+
 
   const xAxis = d3.axisBottom(xScale);
   const yAxis = d3
@@ -147,4 +156,34 @@ function renderScatterPlot(data, commits) {
 let data = await loadData();
 let commits = processCommits(data);
 renderCommitInfo(data, commits);
+
+function renderTooltipContent(commit) {
+  const link = document.getElementById('commit-link');
+  const date = document.getElementById('commit-date');
+
+  if (!commit || Object.keys(commit).length === 0) return;
+
+  link.href = commit.url;
+  link.textContent = commit.id;
+  date.textContent = commit.datetime?.toLocaleString('en', {
+    dateStyle: 'full',
+    timeStyle: 'short',
+  });
+}
+
+function updateTooltipPosition(event) {
+  const tooltip = document.getElementById('commit-tooltip');
+
+  const offsetX = 15;
+  const offsetY = 15;
+
+  tooltip.style.left = `${event.clientX + offsetX}px`;
+  tooltip.style.top = `${event.clientY + offsetY}px`;
+}
+
+function updateTooltipVisibility(show) {
+  const tooltip = document.getElementById('commit-tooltip');
+  tooltip.classList.toggle('visible', show);
+  tooltip.classList.toggle('hidden', !show);
+}
 renderScatterPlot(data, commits);

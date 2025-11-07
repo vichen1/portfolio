@@ -5,18 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meta</title>
   <link rel="stylesheet" href="../style.css">
+
+  <script type="module" src="../global.js"></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="../projects/index.html">Projects</a>
-      <a href="../resume/index.html">Resume</a>
-      <a href="../contact/index.html">Contact</a>
-      <a href="./index.html" class="current">Meta</a>
-      <a href="https://github.com/vichen1" target="_blank">GitHub</a>
-    </nav>
-  </header>
 
   <main>
     <h1>Meta</h1>
@@ -24,6 +16,17 @@
     <div id="stats"></div>
     <h2>Commits by time of day</h2>
     <div id="chart"></div>
+
+    <h2>Commits by time of day</h2>
+    <div id="chart"></div>
+
+    <dl id="commit-tooltip" class="info tooltip hidden">
+      <dt>Commit</dt>
+      <dd><a href="" id="commit-link" target="_blank"></a></dd>
+    
+      <dt>Date</dt>
+      <dd id="commit-date"></dd>
+    </dl>
   </main>
 
   <script type="module" src="./main.js"></script>

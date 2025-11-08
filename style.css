@@ -377,3 +377,70 @@ circle {
 circle:hover {
   transform: scale(1.5);
 }
+
+.summary-stats {
+  margin-block: 2em;
+  text-align: center;
+}
+
+.summary-stats h2 {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1em;
+  font-weight: 700;
+  color: oklch(40% 0.05 250);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+  gap: 1.5em;
+  justify-items: center;
+  text-align: center;
+  padding: 1em 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stats-grid dt {
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: oklch(55% 0.05 250);
+}
+
+.stats-grid dd {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0;
+  color: canvastext;
+}
+circle.selected {
+  fill: #ff6b6b;
+  stroke: black;
+  stroke-width: 1.5;
+}
+#selection-count {
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.5em;
+  color: var(--color-accent);
+}
+#language-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+  gap: 0.5em 1.5em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+#language-breakdown dt {
+  font-weight: 600;
+}
+
+#language-breakdown dd {
+  margin: 0;
+  opacity: 0.8;
+}

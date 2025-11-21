@@ -18,6 +18,11 @@
       <dl class="stats-grid"></dl>
     </section>
     <h2>Commits by time of day</h2>
+    <div id="time-controls" style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+      <label for="commit-progress">Show commits until:</label>
+      <input id="commit-progress" type="range" min="0" max="100" value="100" />
+      <time id="commit-time"></time>
+    </div>
     <div id="chart"></div>
     <p id="selection-count">No commits selected</p>
     <dl id="language-breakdown" class="stats"></dl>

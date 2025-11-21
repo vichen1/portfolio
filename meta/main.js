@@ -255,6 +255,39 @@ let data = await loadData();
 let commits = processCommits(data);
 renderCommitInfo(data, commits);
 
+let commitProgress = 100;
+
+const timeScale = d3.scaleTime()
+  .domain([
+    d3.min(commits, d => d.datetime),
+    d3.max(commits, d => d.datetime)
+  ])
+  .range([0, 100]);
+
+let commitMaxTime = timeScale.invert(commitProgress);
+
+function onTimeSliderChange() {
+  commitProgress = +document.getElementById("commit-progress").value;
+  commitMaxTime = timeScale.invert(commitProgress);
+
+  document.getElementById("commit-time").textContent =
+    commitMaxTime.toLocaleString("en-US", {
+      dateStyle: "long",
+      timeStyle: "short"
+    });
+
+  const filtered = commits.filter(d => d.datetime <= commitMaxTime);
+
+  d3.select("#chart").html(""); // clear old chart
+  renderScatterPlot(data, filtered);
+}
+
+document.getElementById("commit-progress")
+  .addEventListener("input", onTimeSliderChange);
+
+onTimeSliderChange();
+
+
 function renderTooltipContent(commit) {
   const link = document.getElementById('commit-link');
   const date = document.getElementById('commit-date');

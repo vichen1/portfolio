@@ -405,7 +405,7 @@ const stepCommits = commits.filter(d => d.totalLines > 50);
 
 d3.select('#scatter-story')
   .selectAll('.step')
-  .data(commits)
+  .data(stepCommits)
   .join('div')
   .attr('class', 'step')
   .html(d => `
@@ -432,19 +432,15 @@ d3.select('#scatter-story')
       <p>Then I looked over all I had made, and I saw that it was very good.</p>
   `);
 
-
 function onStepEnter(response) {
   const commit = response.element.__data__;
-
-  console.log("Scrolled to commit:", commit.datetime);
-
   const cutoff = commit.datetime;
 
   const filtered = commits.filter(d => d.datetime <= cutoff);
 
   updateScatterPlot(data, filtered);   
-  updateFileDisplay(filtered);       
-  updateSummaryStats(filtered);   
+  updateFileDisplay(filtered);
+  updateSummaryStats(filtered);
 }
 
 const scroller = scrollama();
@@ -452,10 +448,41 @@ const scroller = scrollama();
 scroller
   .setup({
     container: '#scrolly-1',
-    step: '#scrolly-1 .step',
-    offset: 0.5,   
+    step: '#scatter-story .step',   
+    offset: 0.5,
   })
   .onStepEnter(onStepEnter);
 
+d3.select('#files-story')
+  .selectAll('.file-step')
+  .data(stepCommits)
+  .join('div')
+  .attr('class', 'file-step step')
+  .html(d => `
+    <p>
+      After the commit on <strong>${d.datetime.toLocaleString("en", {
+        dateStyle: "full", timeStyle: "short"
+      })}</strong>,
+      the file structure grew and updated.
+    </p>
+  `);
 
+function onFileStepEnter(response) {
+  const commit = response.element.__data__;
+  const cutoff = commit.datetime;
 
+  const filtered = commits.filter(d => d.datetime <= cutoff);
+
+  updateFileDisplay(filtered);
+  updateSummaryStats(filtered);
+}
+
+const scroller2 = scrollama();
+
+scroller2
+  .setup({
+    container: '#scrolly-2',
+    step: '#files-story .file-step',
+    offset: 0.5,
+  })
+  .onStepEnter(onFileStepEnter);

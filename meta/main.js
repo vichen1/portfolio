@@ -1,6 +1,7 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
 let xScale, yScale;
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 async function loadData() {
   const data = await d3.csv("loc.csv", (row) => ({
@@ -286,6 +287,7 @@ function onTimeSliderChange() {
   filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
 
   updateScatterPlot(data, filteredCommits);
+  updateFileDisplay(filteredCommits);
 }
 
 document
@@ -295,6 +297,7 @@ document
 
 renderScatterPlot(data, commits);
 onTimeSliderChange();
+updateFileDisplay(filteredCommits);
 
 function renderTooltipContent(commit) {
   const link = document.getElementById("commit-link");
@@ -367,3 +370,35 @@ function updateScatterPlot(data, commits) {
       updateTooltipVisibility(false);
     });
 }
+function updateFileDisplay(filteredCommits) {
+  const lines = filteredCommits.flatMap(d => d.lines);
+
+  const files = d3.groups(lines, d => d.file)
+    .map(([name, lines]) => ({ name, lines }))
+    .sort((a, b) => b.lines.length - a.lines.length);
+
+  const filesContainer = d3
+    .select('#files')
+    .selectAll('div')
+    .data(files, d => d.name)
+    .join(enter => {
+      const div = enter.append('div');
+      div.append('dt');
+      div.append('dd');
+      return div;
+    });
+
+  filesContainer.select('dt').html(d =>
+    `<code>${d.name}</code><small>${d.lines.length} lines</small>`
+  );
+
+  filesContainer
+  .select('dd')
+  .selectAll('div')
+  .data(d => d.lines)
+  .join('div')
+  .attr('class', 'loc')
+  .attr('style', d => `--color: ${colors(d.type)}`);
+}
+
+

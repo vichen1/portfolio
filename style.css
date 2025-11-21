@@ -444,3 +444,10 @@ circle.selected {
   margin: 0;
   opacity: 0.8;
 }
+#chart svg circle {
+  transition: all 200ms, r calc(var(--r) * 100ms);
+
+  @starting-style {
+    r: 0;
+  }
+}

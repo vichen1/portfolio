@@ -1,4 +1,5 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 
 let xScale, yScale;
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
@@ -400,5 +401,61 @@ function updateFileDisplay(filteredCommits) {
   .attr('class', 'loc')
   .attr('style', d => `--color: ${colors(d.type)}`);
 }
+const stepCommits = commits.filter(d => d.totalLines > 50);
+
+d3.select('#scatter-story')
+  .selectAll('.step')
+  .data(commits)
+  .join('div')
+  .attr('class', 'step')
+  .html(d => `
+      <p>
+        On ${d.datetime.toLocaleString('en', {
+          dateStyle: 'full',
+          timeStyle: 'short',
+        })},
+        I made <a href="${d.url}" target="_blank">
+        ${d.totalLines > 10 ? 'another glorious commit' : 'my first commit, and it was glorious'}
+        </a>.
+      </p>
+
+      <p>
+        I edited ${d.totalLines} lines across ${
+          d3.rollups(
+            d.lines,
+            D => D.length,
+            d => d.file,
+          ).length
+        } files.
+      </p>
+
+      <p>Then I looked over all I had made, and I saw that it was very good.</p>
+  `);
+
+
+function onStepEnter(response) {
+  const commit = response.element.__data__;
+
+  console.log("Scrolled to commit:", commit.datetime);
+
+  const cutoff = commit.datetime;
+
+  const filtered = commits.filter(d => d.datetime <= cutoff);
+
+  updateScatterPlot(data, filtered);   
+  updateFileDisplay(filtered);       
+  updateSummaryStats(filtered);   
+}
+
+const scroller = scrollama();
+
+scroller
+  .setup({
+    container: '#scrolly-1',
+    step: '#scrolly-1 .step',
+    offset: 0.5,   
+  })
+  .onStepEnter(onStepEnter);
+
 
 

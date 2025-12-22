@@ -2,8 +2,9 @@
     {
         "title": "The City Where Bike Share Isn't Shared",
         "year": "2025",
-        "image": "https://dsc106.com/labs/lab02/images/empty.svg",
-        "description": "A personal website showcasing my projects and GitHub stats using JavaScript modules and JSON data."
+        "image": "/portfolio/images/nyc_bike.jpeg",
+        "description": "The City Where Bike Share Isn’t Shared is an interactive data visualization project that analyzes gaps in NYC’s Citi Bike coverage. Using Mapbox and D3.js, it identifies dense, car-free neighborhoods with limited bike and transit access, highlighting equity issues in urban mobility and opportunities for system expansion.",
+        "link":  "https://andykkimm.github.io/dsc106_finalproject/"
       },
     {
         "title": "Analyzing Healthiness Between Recipes",
